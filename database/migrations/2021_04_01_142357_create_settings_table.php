@@ -20,6 +20,7 @@ class CreateSettingsTable extends Migration
             $table->string('contact_number');
             $table->string('address');
             $table->string('logo');
+            $table->text('about');
             $table->timestamps();
         });
     }

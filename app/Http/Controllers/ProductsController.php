@@ -8,6 +8,7 @@ use App\Category;
 use Alert;
 use App\Size;
 use App\Promotion;
+use Illuminate\Validation\Rule;
 
 class ProductsController extends Controller
 {
@@ -19,6 +20,7 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Product::paginate(7);
+        
         $categories = Category::all();
         $sizes = Size::all();
         $promotions = Promotion::all();
@@ -115,10 +117,13 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::find($id);
+        $prod = Product::find($id);
+        $product = $prod::all();
     
         return view ('admin.products.edit')->with('product', $product)
-                                            ->with('categories', Category::all());
+                                            ->with('categories', Category::all())
+                                            ->with('sizes', Size::all())
+                                            ->with('promotions', Promotion::all());
     }
 
     /**
@@ -130,11 +135,19 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $category = Category::get();
+        $arr = [];
+        for ($i=0; $i < count($category); $i++) { 
+            $arr[$i] = $category[$i]->id;
+        }
 
+        
+        
         $this->validate($request, [
             'name' => 'required',
             'price' => 'required',
-            'category_id' => 'required'
+            'category_id' => ['required',
+                            Rule::in ($arr)]
         ]);
 
 
@@ -159,11 +172,12 @@ class ProductsController extends Controller
         $product->colour = $request->colour;
         $product->details = $request->details;
 
+        
 
         $product->save();
-
-        $post->promotions()->sync($request->promotion);
-        $post->sizes()->sync($request->size);
+        $product->sizes()->sync($request->size);
+        $product->promotions()->sync($request->promotion);
+        
         Alert::toast('Product updated successfully','success')->position('top-end');
         
         return redirect()->route('products.index');

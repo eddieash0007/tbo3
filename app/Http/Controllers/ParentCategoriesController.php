@@ -88,6 +88,8 @@ class ParentCategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        
         $big_category = BigCategory::find($id);
 
         $big_category->name = $request->name;

@@ -13,22 +13,32 @@ class PromotionsTableSeeder extends Seeder
     {
         $Promo1 = App\Promotion::create([
             'promotion' => 'New',
-            'colour' => '#6BBB25'
+            'colour' => '#6BBB25',
+            
         ]);
 
         $Promo2 = App\Promotion::create([
             'promotion' => 'Sale',
-            'colour' => '#BB3925 '
+            'colour' => '#BB3925',
+           
         ]);
 
         $Promo3 = App\Promotion::create([
             'promotion' => 'Easter Sale',
-            'colour' => '#25BBBB '
+            'colour' => '#25BBBB',
+           
         ]);
 
         $Promo4 = App\Promotion::create([
             'promotion' => 'Clearance',
-            'colour' => '#AB25BB '
+            'colour' => '#AB25BB',
+            
+        ]);
+
+        $Promo4 = App\Promotion::create([
+            'promotion' => 'Black Fiday',
+            'colour' => '#AB25BB',
+            
         ]);
     }
 }

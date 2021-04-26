@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use Alert;
 use App\BigCategory;
+use Illuminate\Validation\Rule;
 
 class CategoriesController extends Controller
 {
@@ -95,7 +96,22 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
+
+
+        $bigcategory = BigCategory::get();
+        $arr = [];
+        for ($i=0; $i < count($bigcategory); $i++) { 
+            $arr[$i] = $bigcategory[$i]->id;
+        }
+        
+        $this->validate($request,[
+            'name' => 'required',
+            'big_category_id' => ['required',
+            Rule::in ($arr)]
+        ]);
+
+
+        
 
         $category = Category::find($id);
 

@@ -13,9 +13,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/',[
+    'uses' => 'FrontEndController@index',
+    'as' => 'index'
+]);
+
+Route::get('/categories/{slug}',[
+    'uses' => 'FrontEndController@SingleCategory',
+    'as' => 'category.single'
+]);
+
+Route::get('/product/{slug}',[
+    'uses' => 'SingleProductController@index',
+    'as' => 'product.single'
+]);
+
 
 Auth::routes();
 
@@ -148,6 +164,31 @@ Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function(){
     Route::post('/settings/update',[
         'uses' => 'SettingsController@update',
         'as' => 'settings.update'
+    ]);
+
+    Route::get('/carousel',[
+        'uses' => 'SettingsController@carousel',
+        'as' => 'carousel'
+    ]);
+
+    Route::get('/carousel/first',[
+        'uses' => 'SettingsController@first',
+        'as' => 'carousel.first'
+    ]);
+
+    Route::get('/carousel/second',[
+        'uses' => 'SettingsController@second',
+        'as' => 'carousel.second'
+    ]);
+
+    Route::get('/carousel/third',[
+        'uses' => 'SettingsController@third',
+        'as' => 'carousel.third'
+    ]);
+
+    Route::get('/carousel/fourth',[
+        'uses' => 'SettingsController@fourth',
+        'as' => 'carousel.fourth'
     ]);
     // ********************************************************************************
     // Size Routes*****************************************************************

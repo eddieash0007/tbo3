@@ -14,7 +14,7 @@
     <!-- form start -->
    
       <div class="card-body">
-        <form action="{{route('settings.update')}}" method="POST">
+        <form action="{{route('settings.update')}}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="name">Site Name</label>
@@ -34,7 +34,7 @@
 
             <div class="form-group">
               <label for="address">Logo</label>
-              <input type="file" name="address" class="form-control" value="{{ $settings->logo }}">
+              <input type="file" name="logo" class="form-control" >
             </div>
 
             <div class="form-group">
@@ -53,6 +53,16 @@
               @enderror
               </div>
 
+
+              <div class="form-group">
+                <label>About Details</label>
+                <textarea class="form-control" rows="3" placeholder="Enter about page details" name="about"></textarea>
+                @error('about')
+                <p class="text-danger">{{ $message }}</p>
+              @enderror
+              </div>
+
+              
             <div class="form-group">
                 <div class="text-center">
                     <button class="btn btn-success" type="submit">
@@ -60,7 +70,11 @@
                     </button>
                 </div>
             </div>
+
+           
       </div>
     </form>
   </div>
+
+  
 @endsection

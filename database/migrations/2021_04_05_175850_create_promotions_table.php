@@ -17,6 +17,7 @@ class CreatePromotionsTable extends Migration
             $table->id();
             $table->string('promotion');
             $table->string('colour');
+            
             $table->timestamps();
         });
     }

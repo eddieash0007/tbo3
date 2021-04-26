@@ -69,47 +69,7 @@
                   
                   </tr>
 <!-- EDIT:MODAL -->
-                <div class="modal fade" id="modal-default-{{$category->id}}">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h4 class="modal-title">Edit: {{ $category->name}}</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <form action="{{route('category.update', ['id'=> $category->id])}}" method="POST">
-                          {{ csrf_field() }}
-                          <div class="form-group">
-                            <label for="exampleInputEmail1">Category Name</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1"
-                              value="{{$category->name}}" name="name">
-                          </div>
-                          <div class="form-group">
-                            <label>Parent Category</label>
-                            <select class="form-control" name="big_category_id" id="category">
-                             
-                              @foreach ($bigcategories as $bigcategory)
-                                
-                                <option value="{{$bigcategory->id}}">{{$bigcategory->name}}</option>
-                              @endforeach
-                            </select>
-                            @error('parent_category_id')
-                              <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                          </div>
-                          <div class="form-group">
-                            <button type="submit" class="btn btn-primary float-right">Update Category</button>
-                          </div>
-                        </form>
-                            
-                      </div>
-                      <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                  </div>
-                </div>
+                
     <!-- END:: MODAL EDIT -->
 
     <!-- DELETE MODAL -->
@@ -139,6 +99,53 @@
           <!-- /.modal-dialog -->
         </div>
         <!-- END::DELETE MODAL -->
+
+        <div class="modal fade" id="modal-default-{{$category->id}}">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Edit: {{ $category->name}}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="{{route('category.update', ['id'=> $category->id])}}" method="POST">
+                  {{ csrf_field() }}
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Category Name</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1"
+                      value="{{$category->name}}" name="name">
+                  </div>
+                  <div class="form-group">
+                    <label>Parent Category</label>
+                    <select class="form-control" name="big_category_id" id="category">
+                     
+                      @foreach ($bigcategories as $bigcategory)
+
+                      {{-- <option value="{{$bigcategory->id}}" {{($bigcategory->id === $category->big_category_id)?"selected = selected":''}} <? if($bigcategory->id === $category->bigcategory_id){ echo ("selected = selected");} ?> >{{$bigcategory->name}}</option> --}}
+                        
+                     
+                        <option value="{{$bigcategory->id}}"  <?php if ($bigcategory->id === $category->big_category_id) {
+                          echo 'selected';
+                      } ?> >{{$bigcategory->name}}</option>
+                      @endforeach
+                    </select>
+                    @error('parent_category_id')
+                      <p class="text-danger">{{ $message }}</p>
+                    @enderror
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary float-right">Update Category</button>
+                  </div>
+                </form>
+                    
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+        </div>
               @endforeach
               
               
