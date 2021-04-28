@@ -69,6 +69,10 @@ Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function(){
     ]);
     
     
+    Route::get('/category/results',[
+        'uses' => 'CategoriesController@search',
+        'as' => 'category.search'
+    ]);
     
     
     
@@ -123,8 +127,15 @@ Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function(){
         'uses' => 'ProductsController@trashed',
         'as' => 'products.trashed'
     ]);
+
+    Route::get('/results', [
+        'uses' => 'ProductsController@search',
+        'as' => 'products.search'
+    ]);
+
+    
     // ********************************************************************************
-    // User Routes*****************************************************************
+    // User Routes*********************************************************************
     Route::get('/users',[
         'uses' => 'UsersController@index',
         'as' => 'users'

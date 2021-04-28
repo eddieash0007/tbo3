@@ -29,6 +29,13 @@ class CategoriesController extends Controller
      */
     public function create()
     {
+        $bigcategories = BigCategory::all();
+        if($bigcategories->count()==0 )
+        {
+            Alert::warning('Caution','You need to create  parent categories before creating a category');
+           
+            return redirect()->route('parentcategories.create');
+        }
         return view('admin.categories.create') ->with('bigcategories', BigCategory::all());;
     }
 
@@ -144,5 +151,21 @@ class CategoriesController extends Controller
 
         Alert::toast('Category deleted successfully','success')->position('top-end');
         return redirect()->back();
+    }
+
+    public function search()
+    {
+
+        $z = $_GET['query'];
+        
+        $categories = Category::where('name','like', '%'.$z.'%')->paginate(5);
+     
+    
+        
+            
+       
+       
+        return view('admin.categories.results')->with('categories', $categories)
+                                             ->with('bigcategories', BigCategory::all());
     }
 }

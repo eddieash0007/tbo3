@@ -235,4 +235,23 @@ class ProductsController extends Controller
 
         return redirect()->back();
     }
+
+    public function search()
+    {
+
+        $z = $_GET['query'];
+        
+        $products = Product::where('name','like', '%'.$z.'%')->paginate(5);
+     
+    
+        
+            
+        $categories = Category::all();
+        $sizes = Size::all();
+        $promotions = Promotion::all();
+        return view('admin.products.results')->with('products', $products)
+                                            ->with('category', $categories)
+                                            ->with('sizes', $sizes)
+                                            ->with('promotions', $promotions);
+    }
 }

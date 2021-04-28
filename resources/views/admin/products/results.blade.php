@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('page_title')
-    Products
+    Search Results
 @endsection
 
 @section('create_new')
@@ -142,7 +142,7 @@
               @endforeach
             @else 
             <tr>
-              <th colspan="6" class="text-center">No Uploaded Products</th>
+              <th colspan="6" class="text-center" style="color: red">No Results Found</th>
             </tr> 
 
             

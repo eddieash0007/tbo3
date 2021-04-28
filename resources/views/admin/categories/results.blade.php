@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('page_title')
-    Categories
+    Search Results
 @endsection
 
 @section('create_new')
@@ -156,7 +156,7 @@
               
             @else
                   <tr>
-                    <th colspan="5" class="text-center">No Uploaded Categories</th>
+                    <th colspan="6" class="text-center" style="color: red">No Results Found</th>
                   </tr> 
 
             @endif
