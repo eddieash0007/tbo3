@@ -17,7 +17,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate(6);
+        $categories = Category::orderBy('updated_at', 'desc')->paginate(6);
         return view('admin.categories.index')->with('categories', $categories)
                                              ->with('bigcategories', BigCategory::all());
     }
@@ -50,6 +50,7 @@ class CategoriesController extends Controller
         $this->validate($request,[
             'name' => 'required',
             'big_category_id' => 'required'
+            
         ]);
 
         
@@ -58,6 +59,7 @@ class CategoriesController extends Controller
 
         $category->name = $request->name;
         $category->big_category_id = $request->big_category_id;
+        $category->description = $request->description;
         $category->slug = str_slug($request->name);
         
         $category->save();
@@ -124,6 +126,7 @@ class CategoriesController extends Controller
 
         $category->name = $request->name;
         $category->slug = str_slug($request->name);
+        $category->description = $request->description;
         $category->big_category_id = $request->big_category_id;
         
         $category->save();

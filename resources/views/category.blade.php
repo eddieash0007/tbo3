@@ -27,7 +27,7 @@
           <div class="col-lg-9">
             <div class="box">
               <h1>{{$title->name}}</h1>
-              <p>In our Ladies department we offer wide selection of the best products we have found and carefully selected worldwide.</p>
+              <p>{{$title->description}}</p>
             </div>
             <div class="box info-bar">
               <div class="row">

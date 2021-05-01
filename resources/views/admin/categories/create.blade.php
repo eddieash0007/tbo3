@@ -32,9 +32,17 @@
               <option value="{{$bigcategory->id}}">{{$bigcategory->name}}</option>
             @endforeach
           </select>
-          @error('parent_category_id')
+          @error('big_category_id')
             <p class="text-danger">{{ $message }}</p>
           @enderror
+        </div>
+
+        <div class="form-group">
+          <label>Category Description</label>
+          <textarea class="form-control" rows="3" placeholder="Enter Category Description" name="description" id="description"></textarea>
+          @error('description')
+          <p class="text-danger">{{ $message }}</p>
+        @enderror
         </div>
       </div>
       
@@ -47,3 +55,15 @@
     </form>
   </div>
 @endsection
+@section('scripts')
+
+<script>
+  ClassicEditor
+      .create( document.querySelector( '#description' ) )
+      .catch( error => {
+          console.error( error );
+      } );
+</script>
+    
+@endsection
+    

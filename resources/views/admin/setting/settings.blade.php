@@ -56,7 +56,9 @@
 
               <div class="form-group">
                 <label>About Details</label>
-                <textarea class="form-control" rows="3" placeholder="Enter about page details" name="about"></textarea>
+                
+                <textarea class="form-control" rows="3" placeholder="Enter about page details" name="about" id="about"></textarea>
+                
                 @error('about')
                 <p class="text-danger">{{ $message }}</p>
               @enderror
@@ -77,4 +79,15 @@
   </div>
 
   
+@endsection
+@section('scripts')
+
+<script>
+  ClassicEditor
+      .create( document.querySelector( '#about' ) )
+      .catch( error => {
+          console.error( error );
+      } );
+</script>
+    
 @endsection

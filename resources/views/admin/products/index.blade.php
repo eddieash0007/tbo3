@@ -123,7 +123,7 @@
                           <p>No Promotions Available</p>
                       @endif
                       <h4>Details</h4>
-                      <p><div style=" width:50px; word-wrap: break-word; "> {{$product->details}}</div></p>
+                      <p><div style=" width:50px; word-wrap: break-word; "> {!!$product->details!!}</div></p>
         
         
         

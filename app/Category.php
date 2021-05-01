@@ -15,5 +15,5 @@ class Category extends Model
         return $this->belongsTo('App\BigCategory');
     }
 
-    Protected $fillable = ['name','slug','parent_category_id'];
+    Protected $fillable = ['name','slug','parent_category_id','description'];
 }

@@ -90,7 +90,7 @@
         
         <div class="form-group">
           <label>Product Details</label>
-          <textarea class="form-control" rows="3" placeholder="Enter Product Details" name="details"></textarea>
+          <textarea class="form-control" rows="3" placeholder="Enter Product Details" name="details" id="details"></textarea>
           @error('details')
           <p class="text-danger">{{ $message }}</p>
         @enderror
@@ -105,5 +105,15 @@
   </form>
 </div>
 @endsection
+@section('scripts')
 
+<script>
+  ClassicEditor
+      .create( document.querySelector( '#details' ) )
+      .catch( error => {
+          console.error( error );
+      } );
+</script>
+    
+@endsection
     

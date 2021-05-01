@@ -81,7 +81,7 @@
         
         <div class="form-group">
           <label>Product Details</label>
-          <textarea class="form-control" rows="3" placeholder="Enter Product Details" name="details">{{$product->details}}</textarea>
+          <textarea class="form-control" rows="3" placeholder="Enter Product Details" id="details"  name="details">{{$product->details}}</textarea>
         </div>
       
     </div>
@@ -93,5 +93,16 @@
   </form>
 </div>
 @endsection
+@section('scripts')
 
+<script>
+  ClassicEditor
+      .create( document.querySelector( '#details' ) )
+      .catch( error => {
+          console.error( error );
+      } );
+</script>
+    
+@endsection
+    
     

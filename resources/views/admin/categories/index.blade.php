@@ -140,6 +140,14 @@
                       <p class="text-danger">{{ $message }}</p>
                     @enderror
                   </div>
+
+                  <div class="form-group">
+                    <label>Category Description</label>
+                    <textarea class="form-control" rows="3" placeholder="Enter Category Description" name="description" id="description" >{{$category->description}}</textarea>
+                    @error('description')
+                    <p class="text-danger">{{ $message }}</p>
+                  @enderror
+                  </div>
                   <div class="form-group">
                     <button type="submit" class="btn btn-primary float-right">Update Category</button>
                   </div>
@@ -172,4 +180,15 @@
       {{$categories -> links() }}
     </div>
   </div>
+@endsection
+@section('scripts')
+
+<script>
+  ClassicEditor
+      .create( document.querySelector( '#description' ) )
+      .catch( error => {
+          console.error( error );
+      } );
+</script>
+    
 @endsection

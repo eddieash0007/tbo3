@@ -19,7 +19,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(7);
+        $products = Product::orderBy('updated_at', 'desc')->paginate(7);
         
         $categories = Category::all();
         $sizes = Size::all();
@@ -118,9 +118,10 @@ class ProductsController extends Controller
     public function edit($id)
     {
         $prod = Product::find($id);
-        $product = $prod::all();
+        // dd($prod->name);
+        // $product = $prod::all();
     
-        return view ('admin.products.edit')->with('product', $product)
+        return view ('admin.products.edit')->with('product', $prod)
                                             ->with('categories', Category::all())
                                             ->with('sizes', Size::all())
                                             ->with('promotions', Promotion::all());

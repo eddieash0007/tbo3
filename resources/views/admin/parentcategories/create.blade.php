@@ -28,7 +28,7 @@
           <div class="form-group">
             <button type="submit" class="btn btn-primary float-right">Store Parent Category</button>
           </div>
-        
+      
       </div>
     </form>
   </div>
