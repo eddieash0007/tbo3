@@ -68,7 +68,8 @@
                           <p class="price"> 
                             <del></del>GH¢ {{$product->price}}
                           </p>
-                          <p class="buttons"><a href="{{route('product.single', ['slug'=>$product->slug])}}" class="btn btn-outline-secondary">View Product</a><a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
+                          <p class="buttons"><a href="{{route('product.single', ['slug'=>$product->slug])}}" class="btn btn-outline-secondary">View Product</a>
+                            <a href="{{route('cart.add', $product->id)}}" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
                         </div>
                         <!-- /.text-->
                         

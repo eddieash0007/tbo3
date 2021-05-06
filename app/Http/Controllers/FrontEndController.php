@@ -8,6 +8,7 @@ use App\BigCategory;
 use App\Category;
 use App\Product;
 use App\Promotion;
+use Cart;
 
 
 class FrontEndController extends Controller
