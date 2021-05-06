@@ -46,7 +46,7 @@
       
       </div>
       <div class="form-group">
-        <label for="exampleInputFile">Product Image</label>
+        <label for="exampleInputFile">{{Product Image}}</label>
         <input type="file" name="image" class="form-control">
       </div>
 

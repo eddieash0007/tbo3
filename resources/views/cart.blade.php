@@ -41,10 +41,17 @@
                                           <tr>
                                                 <td><a href="{{route('product.single', ['slug'=>$item->associatedModel->slug])}}"><img src="{{asset($item->associatedModel->image)}}" alt="{{$item->name}}"></a></td>
                                                 <td><a href="{{route('product.single', ['slug'=>$item->associatedModel->slug])}}">{{$item->name}}</a></td>
-                                                <td >
+                                                <td style="width: auto">
                                                   <form action="{{route('cart.update', ['itemId'=>$item->id]) }}">
-                                                    <input type="number" class="form-control" id="exampleInputPassword1" step="1" min="0" name="quantity" value="{{$item->quantity}}"> 
-                                                   <input type="submit" class="form-control">
+                                                    <div class="input-group">
+                                                      <input type="number"  class="form-control"  step="1" min="1" name="quantity" value="{{$item->quantity}}"> 
+                                                      <div class="input-group-append">
+                                                        <button type="submit" class="btn btn-outline-secondary"><i class="fa fa-refresh"></i> Update Quantity</button></a>
+                                                      </div>
+                                                    </div>
+                                                    
+                                                   
+                                                   
                                                   </form>
                                                   
                                                 </td>

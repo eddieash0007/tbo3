@@ -10,8 +10,8 @@
             <button type="button" data-toggle="collapse" data-target="#search"
                 class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i
                     class="fa fa-search"></i></button><a href="{{route('cart.index')}}"
-                class="btn btn-outline-secondary navbar-toggler"><i class="fa fa-shopping-cart"></i>span> 
-                {{Cart::getTotalQuantity()}} item(s) in cart
+                class="btn btn-outline-secondary navbar-toggler"><i class="fa fa-shopping-cart"></i><span> 
+                {{Cart::getContent()->count()}} item(s) in cart
             </span></a>
         </div>
         <div id="navigation" class="collapse navbar-collapse">
@@ -47,6 +47,8 @@
                 @endforeach
 
             </ul>
+
+        </div>
             <div class="navbar-buttons d-flex justify-content-end">
                 <!-- /.nav-collapse-->
                 <div id="search-not-mobile" class="navbar-collapse collapse"></div><a data-toggle="collapse"
