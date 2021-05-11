@@ -10,7 +10,7 @@
                           <!-- breadcrumb-->
                           <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                              <li class="breadcrumb-item"><a href="#">Home</a></li>
+                              <li class="breadcrumb-item"><a href="{{route('index')}}">Home</a></li>
                               <li aria-current="page" class="breadcrumb-item active">Shopping cart</li>
                             </ol>
                           </nav>
@@ -55,9 +55,9 @@
                                                   </form>
                                                   
                                                 </td>
-                                                <td>GH¢ {{Cart::get($item->id)->getPriceSum()}} </td>
+                                                <td>{{$item->price}} </td>
                                                 
-                                                <td>GH¢ 246.00 </td>
+                                                <td>GH¢ {{Cart::get($item->id)->getPriceSum()}} </td>
                                                 <td><a href="{{route('cart.destroy',$item->id)}}"><i class="fa fa-trash-o"></i></a></td>
                                           </tr>
                                     @endforeach
@@ -74,9 +74,9 @@
                               <div class="box-footer d-flex justify-content-between flex-column flex-lg-row">
                                 <div class="left"><a href="category.html" class="btn btn-outline-secondary"><i class="fa fa-chevron-left"></i> Continue shopping</a></div>
                                 <div class="right">
-                                  <a href=""><button class="btn btn-outline-secondary"><i class="fa fa-refresh"></i> Update cart</button></a>
-                                  <button type="submit" class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i></button>
-                                </div>
+                                 
+                                  <a href="{{route('checkout')}}"><button type="submit" class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i></button>
+                                  </a>                          </div>
                               </div>
                           
                           </div>

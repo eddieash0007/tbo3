@@ -106,6 +106,7 @@
             </div>
         </div>
     </header>
+    @include('sweetalert::alert')
     @yield('content')
     <!--
     *** FOOTER ***

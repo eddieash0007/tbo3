@@ -7,6 +7,7 @@ use App\Product;
 use App\Setting;
 use App\BigCategory;
 use App\Category;
+use Alert;
 
 class CartController extends Controller
 {
@@ -66,6 +67,19 @@ class CartController extends Controller
       ]);
      
       return back();
+   }
+
+   public function checkout()
+   {
+      if(\Cart::isEmpty())
+      {
+         Alert::warning('Caution','You need to have at least one product in your cart before proceeding to check out');
+           
+            return redirect()->back();
+      }
+      return view('checkout')->with('settings',Setting::first())
+                              ->with('bigcategories',BigCategory::all())
+                              ->with('categories',Category::all());
    }
 
 }
