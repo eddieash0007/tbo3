@@ -37,6 +37,26 @@
               </p>
             </a>
           </li>
+
+            <li class="nav-item">
+    <a href="{{route('home')}}" class="nav-link">
+      <i class="nav-icon fas fa-cash-register"></i>
+      <p>
+        Orders
+        <i class="right fas fa-angle-left"></i>
+      </p>
+    </a>
+    <ul class="nav nav-treeview">
+      <li class="nav-item">
+        <a href="{{route('orders.index')}}" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p>All Orders</p>
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+
           <li class="nav-item">
             <a href="{{route('home')}}" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
@@ -235,3 +255,8 @@
     </div>
     <!-- /.sidebar -->
   </aside>
+
+
+
+
+

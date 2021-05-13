@@ -64,6 +64,45 @@
                     </div>
                   </div>
                   <!-- /.row-->
+                  <label for="email">Payment Methods</label>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="box payment-method">
+                        <h4>Paypal</h4>
+                        <p>We like it all.</p>
+                        <div class="box-footer text-center">
+                          <input type="radio" name="payment_method" value="paypal" disabled>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="box payment-method">
+                        <h4>Payment gateway</h4>
+                        <p>VISA and Mastercard only.</p>
+                        <div class="box-footer text-center">
+                          <input type="radio" name="payment_method" value="visa" disabled>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="box payment-method">
+                        <h4>Cash on delivery</h4>
+                        <p>You pay when you get it.</p>
+                        <div class="box-footer text-center">
+                          <input type="radio" name="payment_method" value="cash_on_delivery">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="box payment-method" >
+                        <h4>Mobile Money</h4>
+                        <p>Convenience at it's best.</p>
+                        <div class="box-footer text-center">
+                          <input type="radio" name="payment_method" value="momo" >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="box-footer d-flex justify-content-between"><a href="{{route('cart.index')}}" class="btn btn-outline-secondary"><i class="fa fa-chevron-left"></i>Back to Basket</a>
                   <button type="submit" class="btn btn-primary">Continue to Payment Method<i class="fa fa-chevron-right"></i></button>
@@ -109,3 +148,12 @@
   </div>
 
 @endsection 
+
+
+
+
+    
+     
+      
+    
+  

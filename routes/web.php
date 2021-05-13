@@ -44,6 +44,10 @@ Auth::routes();
 
 Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function(){
     Route::get('/home', 'HomeController@index')->name('home');
+    
+    Route::resource('orders', 'OrderController');
+
+
     // Categories routes**************************************************************
     Route::get('/categories',[
         'uses' => 'CategoriesController@index',

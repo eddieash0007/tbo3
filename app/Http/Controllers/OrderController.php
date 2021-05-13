@@ -14,7 +14,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.orders.index')->with('orders',Order::all());
     }
 
     /**
@@ -44,13 +44,15 @@ class OrderController extends Controller
         ]);
             $order = new order();
 
-            $order->order_number = uniqid('ED-');
+            // $order->order_number = uniqid('ED-');
+
+            $order->order_number = uniqid(str_random(3));
             $order->first_name = $request->first_name;
             $order->last_name = $request->last_name;
             $order->email = $request->email;
             $order->phone = $request->phone;
             $order->address = $request->address;
-
+            $order->payment_method = $request->payment_method;
             $order->grand_total = \Cart::getTotal();
             $order->item_count = \Cart::getContent()->count();
 
@@ -58,10 +60,17 @@ class OrderController extends Controller
        
         $cartItems = \Cart::getContent();
 
+        // save order items
         foreach($cartItems as $item){
             $order->items()->attach($item->id,['price'=>$item->price, 'quantity'=> $item->quantity]);
         }
 
+        // payment
+        // if(request('payment_method')== 'momo')
+        // {
+           
+        // }
+        // empty cart
         \Cart::clear();
 
         return "order completed";
